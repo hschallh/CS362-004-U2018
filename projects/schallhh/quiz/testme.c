@@ -5,18 +5,16 @@
 
 char inputChar()
 {
-    // TODO: rewrite this function
     char random = rand() % 96 + 32;
     return random == 127 ? 0 : random;
 }
 
 char *inputString()
 {
-    // TODO: rewrite this function
     char* pool = "rest";
-    static char str[80];
+    static char str[6];
     int i;
-    for (i = 0; i < 80; i++) {
+    for (i = 0; i < 6; i++) {
       str[i] = pool[rand() % 5];
     }
     return str;
