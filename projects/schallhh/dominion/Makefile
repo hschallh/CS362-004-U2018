@@ -79,12 +79,12 @@ randomtestresults: randomtestcard1.c randomtestcard2.c randomtestadventurer.c do
 	gcov -f -b dominion.c >> randomtestcard1.out
 	cat dominion.c.gcov >> randomtestcard1.out
 
-	# echo "randomtestcard2.c:" >> randomtestcard2.out
-	# gcc -o randomtestcard2 -g dominion.c rngs.o randomtestcard2.c $(CFLAGS)
-	# ./randomtestcard2 >> randomtestcard2.out
-	# echo "gcov results" >> randomtestcard2.out
-	# gcov -f -b dominion.c >> randomtestcard2.out
-	# cat dominion.c.gcov >> randomtestcard2.out
+	echo "randomtestcard2.c:" >> randomtestcard2.out
+	gcc -o randomtestcard2 -g dominion.c rngs.o randomtestcard2.c $(CFLAGS)
+	./randomtestcard2 >> randomtestcard2.out
+	echo "gcov results" >> randomtestcard2.out
+	gcov -f -b dominion.c >> randomtestcard2.out
+	cat dominion.c.gcov >> randomtestcard2.out
 
 	echo "randomtestadventurer.c:" >> randomtestadventurer.out
 	gcc -o randomtestadventurer -g dominion.c rngs.o randomtestadventurer.c $(CFLAGS)

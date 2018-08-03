@@ -31,29 +31,35 @@ int main()
 {
     srand(time(NULL));
 
-    int seed = rand();
-    int numPlayer = 2;
     int k[10] = { adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall };
     struct gameState G, prevG;
-    int p, i;
-    int coin_bonus = 0;
+    int p, i, j;
+    int coin_bonus = 0, smithyPos;
 
     memset(&G, 23, sizeof(struct gameState));
 
     printf("Testing: smithyEffect()\n");
 
-    for (i = 0; i < TRIES; i++) {
+    for (j = 0; j < TRIES; j++) {
+        int seed = rand();
+        int numPlayer = 2;
 
         initializeGame(numPlayer, k, seed, &G);
         p = whoseTurn(&G);
 
-        // Place a smithy in the current player's hand and set the end of the deck to 2, 1, 0
-        G.hand[p][0] = smithy;
+        // Randomize the player's deck
+        G.deckCount[p] = rand() % (MAX_DECK - 3) + 3;
+        for (i = 0; i < G.deckCount[p]; G.deck[p][i++] = rand() % (treasure_map + 1))
+            ;
+
+        // Place a smithy in the current player's hand
+        smithyPos = rand() % G.handCount[p];
+        G.hand[p][smithyPos] = smithy;
 
         memcpy(&prevG, &G, sizeof(struct gameState));
 
         // Play card
-        cardEffect(smithy, 0, 0, 0, &G, 0, &coin_bonus);
+        cardEffect(smithy, 0, 0, 0, &G, smithyPos, &coin_bonus);
 
         // Test states
         testAssert(coin_bonus == 0, "No bonus gained from play.");

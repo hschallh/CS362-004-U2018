@@ -11,7 +11,7 @@
 #include <string.h>
 #include <time.h>
 
-#define TRIES 1000
+#define TRIES 100
 
 int testsPassed = 1;
 
