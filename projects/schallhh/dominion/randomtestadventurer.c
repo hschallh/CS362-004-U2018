@@ -46,12 +46,13 @@ void adventureTest()
 
         p = whoseTurn(&G);
 
-        // Randomize the player's deck and discard count, fill them with estates,
+        // Randomize the player's deck and discard count, fill them with random
+        // cards that are not treasures
         G.deckCount[p] = rand() % (MAX_DECK / 2 - 3) + 3;
         G.discardCount[p] = rand() % (MAX_DECK / 2 - 3) + 3;
-        for (i = 0; i < G.deckCount[p]; G.deck[p][i++] = estate)
+        for (i = 0; i < G.deckCount[p]; G.deck[p][i++] = rand() % (treasure_map - gold + 1) + adventurer)
             ;
-        for (i = 0; i < G.discardCount[p]; G.discard[p][i++] = estate)
+        for (i = 0; i < G.discardCount[p]; G.discard[p][i++] = rand() % (treasure_map - gold + 1) + adventurer)
             ;
 
         // Randomize where 3 treasures lay in the deck or discard
