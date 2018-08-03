@@ -101,9 +101,6 @@ void adventureTest()
         updateCoins(p, &prevG, 0);
         // Note: (cardNo - 3) is the value of any treasure card
         testAssert(prevG.coins + expectedCoins == G.coins, "Value of the player's hand has increased the expected coin's values");
-
-        printf("Old: %d\t New: %d\t Expected: %d\t C: %d\t S: %d\t G: %d\t Deck: %d\t Disc: %d\n",
-            prevG.coins, G.coins, expectedCoins, copperPos, silverPos, goldPos, prevG.deckCount[p], prevG.discardCount[p]);
     }
 }
 
