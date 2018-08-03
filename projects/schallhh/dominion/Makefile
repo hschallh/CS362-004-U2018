@@ -36,7 +36,7 @@ player: player.c interface.o
 all: playdom player
 
 clean:
-	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4
+	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 randomtestcard1 randomtestadventurer randomtestcard2
 
 unittestresults: unittest1.c unittest2.c unittest3.c unittest4.c cardtest1.c cardtest2.c cardtest3.c cardtest4.c dominion.c rngs.o
 	echo "Result for running tests:" > unittestresults.out
@@ -73,16 +73,18 @@ unittestresults: unittest1.c unittest2.c unittest3.c unittest4.c cardtest1.c car
 randomtestresults: randomtestcard1.c randomtestcard2.c randomtestadventurer.c dominion.c rngs.o
 	echo "Result for running random tests:" > randomtestsresults.out
 
-	gcc -o randomtestcard1 -g dominion.c rngs.o randomtestcard1.c $(CFLAGS)
-	gcc -o randomtestcard2 -g dominion.c rngs.o randomtestcard2.c $(CFLAGS)
+	# gcc -o randomtestcard1 -g dominion.c rngs.o randomtestcard1.c $(CFLAGS)
+	# gcc -o randomtestcard2 -g dominion.c rngs.o randomtestcard2.c $(CFLAGS)
 	gcc -o randomtestadventurer -g dominion.c rngs.o randomtestadventurer.c $(CFLAGS)
 
-	echo "randomtestcard1.c:" >> randomtestsresults.out
-	./randomtestcard1 >> randomtestsresults.out
-	echo "randomtestcard2.c:" >> randomtestsresults.out
-	./randomtestcard2 >> randomtestsresults.out
+	# echo "randomtestcard1.c:" >> randomtestsresults.out
+	# ./randomtestcard1 >> randomtestsresults.out
+	# echo "randomtestcard2.c:" >> randomtestsresults.out
+	# ./randomtestcard2 >> randomtestsresults.out
 	echo "randomtestadventurer.c:" >> randomtestsresults.out
 	./randomtestadventurer >> randomtestsresults.out
 
+
+	echo "gcov results" >> randomtestsresults.out
 	gcov -f -b dominion.c >> randomtestsresults.out
 	cat dominion.c.gcov >> randomtestsresults.out
