@@ -71,8 +71,8 @@ int main() {
     testAssert(G.deckCount[p] == prevG.deckCount[p] - 1, "Deck decresed by 1");
 
     // Test cards in right place
-    testAssert(prevG.deck[p][prevG.deckCount[p] - 1] == G.hand[p][0],
-               "Last card in previous deck replaces village at front of hand");
+    testAssert(prevG.deck[p][prevG.deckCount[p] - 1] == G.hand[p][villagePos],
+               "Last card in previous deck replaces village in hand");
   }
 
   printf("%s\n", testsPassed ? "All tests passed" : "1 or more tests failed");
