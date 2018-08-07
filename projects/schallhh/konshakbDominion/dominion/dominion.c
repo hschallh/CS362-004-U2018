@@ -655,7 +655,7 @@ int adventuredraw(int currentPlayer, int drawntreasure, int z, int temphand[], i
             drawntreasure = drawntreasure + 2;
         else {
             temphand[z] = cardDrawn;
-            // state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).BUG COMMENTED OUT removing TOP CARD
+            state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).BUG COMMENTED OUT removing TOP CARD
             z++;
         }
     }

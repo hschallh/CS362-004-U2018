@@ -93,3 +93,4 @@ randomtestresults: randomtestcard1.c randomtestcard2.c randomtestadventurer.c do
 	gcov -f -b dominion.c >> randomtestadventurer.out
 	cat dominion.c.gcov >> randomtestadventurer.out
 
+tests: randomtestresults unittestresults
