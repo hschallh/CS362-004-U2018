@@ -36,7 +36,7 @@ player: player.c interface.o
 all: playdom player
 
 clean:
-	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4
+	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 randomtestcard1 randomtestadventurer randomtestcard2
 
 unittestresults: unittest1.c unittest2.c unittest3.c unittest4.c cardtest1.c cardtest2.c cardtest3.c cardtest4.c dominion.c rngs.o
 	echo "Result for running tests:" > unittestresults.out
@@ -49,7 +49,7 @@ unittestresults: unittest1.c unittest2.c unittest3.c unittest4.c cardtest1.c car
 	gcc -o cardtest2 -g dominion.c rngs.o cardtest2.c $(CFLAGS)
 	gcc -o cardtest3 -g dominion.c rngs.o cardtest3.c $(CFLAGS)
 	gcc -o cardtest4 -g dominion.c rngs.o cardtest4.c $(CFLAGS)
-	
+
 	echo "unittest1.c:" >> unittestresults.out
 	./unittest1 >> unittestresults.out
 	echo "unittest2.c:" >> unittestresults.out
@@ -69,3 +69,27 @@ unittestresults: unittest1.c unittest2.c unittest3.c unittest4.c cardtest1.c car
 
 	gcov -f -b dominion.c >> unittestresults.out
 	cat dominion.c.gcov >> unittestresults.out
+
+randomtestresults: randomtestcard1.c randomtestcard2.c randomtestadventurer.c dominion.c rngs.o
+
+	echo "randomtestcard1.c:" >> randomtestcard1.out
+	gcc -o randomtestcard1 -g dominion.c rngs.o randomtestcard1.c $(CFLAGS)
+	./randomtestcard1 >> randomtestcard1.out
+	echo "gcov results" >> randomtestcard1.out
+	gcov -f -b dominion.c >> randomtestcard1.out
+	cat dominion.c.gcov >> randomtestcard1.out
+
+	echo "randomtestcard2.c:" >> randomtestcard2.out
+	gcc -o randomtestcard2 -g dominion.c rngs.o randomtestcard2.c $(CFLAGS)
+	./randomtestcard2 >> randomtestcard2.out
+	echo "gcov results" >> randomtestcard2.out
+	gcov -f -b dominion.c >> randomtestcard2.out
+	cat dominion.c.gcov >> randomtestcard2.out
+
+	echo "randomtestadventurer.c:" >> randomtestadventurer.out
+	gcc -o randomtestadventurer -g dominion.c rngs.o randomtestadventurer.c $(CFLAGS)
+	./randomtestadventurer >> randomtestadventurer.out
+	echo "gcov results" >> randomtestadventurer.out
+	gcov -f -b dominion.c >> randomtestadventurer.out
+	cat dominion.c.gcov >> randomtestadventurer.out
+

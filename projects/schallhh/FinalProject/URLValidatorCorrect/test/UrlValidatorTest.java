@@ -24,7 +24,7 @@ import junit.framework.TestCase;
  */
 public class UrlValidatorTest extends TestCase {
 
-   private final boolean printStatus = false;
+   private final boolean printStatus = true;
    private final boolean printIndex = false;//print index that indicates current scheme,host,port,path, query test were using.
 
    public UrlValidatorTest(String testName) {
@@ -34,6 +34,7 @@ public class UrlValidatorTest extends TestCase {
    @Override
 protected void setUp() {
       for (int index = 0; index < testPartsIndex.length - 1; index++) {
+    	  System.out.println(((ResultPair[]) testUrlParts[index]).length);
          testPartsIndex[index] = 0;
       }
    }
@@ -80,7 +81,7 @@ protected void setUp() {
     *
     * @param testObjects Used to create a url.
     */
-   public void testIsValid(Object[] testObjects, long allowAllSchemes) {
+	public void testIsValid(Object[] testObjects, long allowAllSchemes) {
 	      UrlValidator urlVal = new UrlValidator(null, null, allowAllSchemes);
 	      //UrlValidator urlVal = new UrlValidator(null, allowAllSchemes);
       assertTrue(urlVal.isValid("http://www.google.com"));
