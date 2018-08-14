@@ -21,11 +21,6 @@ super(testName);
 
 public void testManualTest()
 {
-//You can use this function to implement your manual testing	
-	
-}
-	//MANUAL TESTS
- public void testing() {
 	   System.out.println("boolean ");
 	      UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
 
@@ -224,6 +219,7 @@ public void testIsValid()
 	public static void main(String[] argv) {
 
 		UrlValidatorTest fct = new UrlValidatorTest("url test");
+		fct.testManualTest();
 		fct.testIsValid();
 	}
 }
