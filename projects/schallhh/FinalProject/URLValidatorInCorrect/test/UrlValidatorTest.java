@@ -24,6 +24,51 @@ public void testManualTest()
 //You can use this function to implement your manual testing	
 	
 }
+	//MANUAL TESTS
+ public void testing() {
+	   System.out.println("boolean ");
+	      UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
+
+	   String[] good = {"http://www.google.com", "http://www.google.com:80/test1", "http://www.espn.com/testing", "http://www.google.com/test1/testing/",
+	   		 "http://www.espn.com/testing/", "http://www.google.com:80", "http://www.google.com/", "http://www.yahoo.com", "http://www.yahoo.com/test/this" };
+	   
+	   String[] bad = {"http://www.google.com:65636/t123", "http://go.com:80/..//file",  "http://0.0.0.0:0/..//file", "http://255.255.255.255:80/..//file",
+			   "http://255.com:0/..//file?action=view", "http://256.256.256.256"};
+	
+	   int count;
+	  
+	   for(int i=0; i <good.length; i++)
+	   {
+	   boolean result = urlVal.isValid(good[i]);
+	  // System.out.println("boolean " + result);
+	   if(result == true)
+	   {
+      	 System.out.println("Good: " + good[i]);
+      	 
+	   }
+       else
+      	 System.out.println("Incorrectly listed as bad: " + good[i]);
+	   }
+	   for(int j=0; j <bad.length; j++)
+	   {
+	   boolean result = urlVal.isValid(bad[j]);
+	  // System.out.println("boolean " + result);
+	   if(result == true)
+	   {
+      	 System.out.println("Incorrectly listed as good: " + bad[j]);
+      	 
+	   }
+       else
+      	 System.out.println("Bad: " + bad[j]);
+
+	   }
+	   System.out.println("Addresses that crashed function: URL's that begin with ftp, https, h3t,  and htttps");
+   }
+   /*public void testValidator202() {
+       String[] schemes = {"http","https"};
+       UrlValidator urlValidator = new UrlValidator(schemes, UrlValidator.NO_FRAGMENTS);
+       urlValidator.isValid("http://www.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.logoworks.comwww.log");
+   }
 
 
 public void testYourFirstPartition()
